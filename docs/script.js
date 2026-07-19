@@ -3,6 +3,8 @@
   const menuButton = document.querySelector('[data-menu-button]');
   const nav = document.querySelector('[data-nav]');
 
+  if (!document.getElementById('top')) document.body.id = 'top';
+
   const closeMenu = () => {
     if (!menuButton || !nav) return;
     nav.classList.remove('open');
