@@ -1,0 +1,37 @@
+DAVID BARSKE PROFILE WEBSITE — GITHUB UPLOAD PACKAGE
+=====================================================
+
+TARGET REPOSITORY
+https://github.com/davidbarske/Profile
+
+PUBLISHING CONFIGURATION
+Branch: main
+Folder: /docs
+
+FILES TO UPLOAD
+Upload the README.md file and the complete docs folder to the ROOT of the
+repository. Preserve the folder structure exactly.
+
+EXPECTED PUBLIC ROUTES
+https://davidbarske.github.io/Profile/
+https://davidbarske.github.io/Profile/students-syndicates-shredders/
+
+RECOMMENDED WEB-INTERFACE PROCEDURE
+1. Open the repository.
+2. Create a backup branch from main named:
+   backup/pre-final-profile-site
+3. Return to main.
+4. Select Add file > Upload files.
+5. Drag README.md and the complete docs folder from this extracted package.
+6. Commit with this message:
+   Deploy final David Barske profile website
+7. Open Settings > Pages and confirm:
+   Deploy from a branch / main / docs
+8. Wait for deployment, then open the public route and press Ctrl+F5.
+
+IMPORTANT
+GitHub must receive the extracted files and folders. Do not upload this ZIP
+itself because GitHub will not extract it as a website.
+
+If an obsolete docs/assets folder remains from the previous site, it is safe
+but unused. You may delete it after the new site has been verified.
