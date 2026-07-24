@@ -21,6 +21,195 @@
     :root {
       --essay-display: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
       --essay-editorial: Baskerville, "Baskerville Old Face", "Hoefler Text", "Palatino Linotype", Georgia, serif;
+      --systems-blue: #72c9f5;
+      --systems-blue-soft: rgba(114, 201, 245, .18);
+      --systems-gold: #d1ad6d;
+      --systems-gold-soft: rgba(209, 173, 109, .15);
+      --systems-grid: rgba(204, 228, 246, .055);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 7% 22%, rgba(21, 82, 120, .065), transparent 25rem),
+        radial-gradient(circle at 94% 48%, rgba(139, 101, 48, .055), transparent 22rem),
+        linear-gradient(rgba(7, 19, 31, .023) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7, 19, 31, .023) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, auto, 52px 52px, 52px 52px, auto;
+    }
+
+    .essay-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(72, 178, 242, .22), transparent 28%),
+        radial-gradient(circle at 82% 20%, rgba(209, 173, 109, .13), transparent 24%),
+        radial-gradient(circle at 68% 82%, rgba(52, 132, 188, .11), transparent 27%),
+        linear-gradient(135deg, #050e18 0%, #0a1d2c 52%, #11334a 100%);
+    }
+
+    .essay-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(5, 14, 24, .05) 48%, rgba(5, 14, 24, .32) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.018), transparent 36%, rgba(0,0,0,.09));
+    }
+
+    .essay-hero-grid {
+      position: relative;
+      z-index: 3;
+    }
+
+    .essay-hero-grid > div:first-child {
+      text-shadow: 0 2px 22px rgba(0, 0, 0, .42);
+    }
+
+    .systems-field {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: .82;
+      mix-blend-mode: screen;
+    }
+
+    .systems-field .grid-line {
+      stroke: var(--systems-grid);
+      stroke-width: 1;
+    }
+
+    .systems-field .schema-box {
+      fill: rgba(255, 255, 255, .018);
+      stroke: rgba(114, 201, 245, .24);
+      stroke-width: 1.35;
+    }
+
+    .systems-field .schema-rule,
+    .systems-field .schema-link,
+    .systems-field .network-link {
+      fill: none;
+      stroke: rgba(138, 205, 241, .15);
+      stroke-width: 1.6;
+    }
+
+    .systems-field .schema-rule {
+      stroke: rgba(138, 205, 241, .10);
+      stroke-width: 1;
+    }
+
+    .systems-field .schema-label {
+      fill: rgba(214, 235, 248, .42);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .systems-field .schema-field {
+      fill: rgba(214, 235, 248, .25);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 10px;
+      letter-spacing: .07em;
+    }
+
+    .systems-field .network-node {
+      fill: rgba(139, 216, 255, .72);
+    }
+
+    .systems-field .network-halo {
+      fill: rgba(114, 201, 245, .08);
+      stroke: rgba(114, 201, 245, .14);
+      stroke-width: 1;
+    }
+
+    .systems-field .flow-path {
+      fill: none;
+      stroke: url(#systems-flow-gradient);
+      stroke-width: 3.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: url(#systems-soft-glow);
+    }
+
+    .systems-field .signal-path {
+      fill: none;
+      stroke: rgba(209, 173, 109, .18);
+      stroke-width: 1.3;
+      stroke-dasharray: 5 9;
+    }
+
+    .systems-field .shredder-tooth {
+      fill: rgba(255,255,255,.012);
+      stroke: rgba(190, 218, 237, .11);
+      stroke-width: 1.25;
+    }
+
+    .systems-field .shredder-axis {
+      fill: none;
+      stroke: rgba(209, 173, 109, .14);
+      stroke-width: 1.5;
+    }
+
+    .synthesis,
+    .section.light,
+    .section.white,
+    .connect {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .synthesis::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .5;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(132, 203, 240, .11) 1px, transparent 1.4px),
+        radial-gradient(circle at 88% 24%, rgba(209, 173, 109, .11), transparent 24rem),
+        linear-gradient(120deg, transparent 0 46%, rgba(132, 203, 240, .035) 46% 47%, transparent 47% 100%);
+      background-size: 36px 36px, auto, auto;
+    }
+
+    .section.light::before,
+    .section.white::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 18%, rgba(31, 94, 132, .05), transparent 20rem),
+        radial-gradient(circle at 92% 74%, rgba(139, 101, 48, .045), transparent 18rem);
+    }
+
+    .connect::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .45;
+      background:
+        linear-gradient(120deg, transparent 0 34%, rgba(126, 198, 235, .055) 34% 35%, transparent 35% 100%),
+        radial-gradient(circle at 82% 26%, rgba(209, 173, 109, .11), transparent 20rem);
+    }
+
+    .synthesis > .container,
+    .section > .container,
+    .section > .article,
+    .connect > .container {
+      position: relative;
+      z-index: 1;
     }
 
     .article p {
@@ -97,6 +286,12 @@
     }
 
     @media (max-width: 760px) {
+      .systems-field {
+        opacity: .62;
+        transform: scale(1.08);
+        transform-origin: 70% 45%;
+      }
+
       .article .chapter > h2 {
         font-size: clamp(2rem, 10vw, 2.65rem);
       }
@@ -131,6 +326,103 @@
   </header>
 
   <section class="essay-hero" id="top">
+    <svg class="systems-field" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="systems-flow-gradient" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#4c9bc7" stop-opacity=".22"></stop>
+          <stop offset="48%" stop-color="#78d3ff" stop-opacity=".92"></stop>
+          <stop offset="100%" stop-color="#d1ad6d" stop-opacity=".64"></stop>
+        </linearGradient>
+        <filter id="systems-soft-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="2.4" result="blur"></feGaussianBlur>
+          <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+        </filter>
+      </defs>
+
+      <g opacity=".62">
+        <line class="grid-line" x1="110" y1="0" x2="110" y2="900"></line>
+        <line class="grid-line" x1="310" y1="0" x2="310" y2="900"></line>
+        <line class="grid-line" x1="510" y1="0" x2="510" y2="900"></line>
+        <line class="grid-line" x1="710" y1="0" x2="710" y2="900"></line>
+        <line class="grid-line" x1="910" y1="0" x2="910" y2="900"></line>
+        <line class="grid-line" x1="1110" y1="0" x2="1110" y2="900"></line>
+        <line class="grid-line" x1="1310" y1="0" x2="1310" y2="900"></line>
+        <line class="grid-line" x1="1510" y1="0" x2="1510" y2="900"></line>
+        <line class="grid-line" x1="0" y1="110" x2="1600" y2="110"></line>
+        <line class="grid-line" x1="0" y1="260" x2="1600" y2="260"></line>
+        <line class="grid-line" x1="0" y1="410" x2="1600" y2="410"></line>
+        <line class="grid-line" x1="0" y1="560" x2="1600" y2="560"></line>
+        <line class="grid-line" x1="0" y1="710" x2="1600" y2="710"></line>
+        <line class="grid-line" x1="0" y1="860" x2="1600" y2="860"></line>
+      </g>
+
+      <g transform="translate(50 105)" opacity=".72">
+        <rect class="schema-box" x="0" y="0" width="210" height="116" rx="5"></rect>
+        <line class="schema-rule" x1="0" y1="35" x2="210" y2="35"></line>
+        <text class="schema-label" x="18" y="23">CLIENT</text>
+        <text class="schema-field" x="18" y="58">CLIENT_ID</text>
+        <text class="schema-field" x="18" y="79">RISK_CONTEXT</text>
+        <text class="schema-field" x="18" y="100">TRUST_SIGNAL</text>
+
+        <rect class="schema-box" x="278" y="56" width="198" height="116" rx="5"></rect>
+        <line class="schema-rule" x1="278" y1="91" x2="476" y2="91"></line>
+        <text class="schema-label" x="296" y="79">POLICY</text>
+        <text class="schema-field" x="296" y="114">POLICY_ID</text>
+        <text class="schema-field" x="296" y="135">CLIENT_ID</text>
+        <text class="schema-field" x="296" y="156">VALUE_PROMISE</text>
+
+        <rect class="schema-box" x="102" y="218" width="228" height="116" rx="5"></rect>
+        <line class="schema-rule" x1="102" y1="253" x2="330" y2="253"></line>
+        <text class="schema-label" x="120" y="241">INTERACTION</text>
+        <text class="schema-field" x="120" y="276">CALL_ID</text>
+        <text class="schema-field" x="120" y="297">CLIENT_ID</text>
+        <text class="schema-field" x="120" y="318">MEANING</text>
+
+        <path class="schema-link" d="M210 58 C244 58 246 112 278 112"></path>
+        <path class="schema-link" d="M104 116 C104 166 150 179 164 218"></path>
+        <path class="schema-link" d="M328 172 C324 205 294 209 282 218"></path>
+        <circle class="network-node" cx="242" cy="84" r="3"></circle>
+        <circle class="network-node" cx="131" cy="178" r="3"></circle>
+      </g>
+
+      <g transform="translate(655 118)" opacity=".88">
+        <path class="network-link" d="M0 172 L112 104 L220 164 L326 92 L438 170 L566 114 L704 190"></path>
+        <path class="network-link" d="M112 104 L148 22"></path>
+        <path class="network-link" d="M220 164 L244 272"></path>
+        <path class="network-link" d="M326 92 L350 8"></path>
+        <path class="network-link" d="M438 170 L468 286"></path>
+        <path class="network-link" d="M566 114 L610 30"></path>
+        <path class="network-link" d="M704 190 L770 108"></path>
+        <path class="flow-path" d="M0 172 C54 146 80 126 112 104 C160 72 184 142 220 164 C266 192 278 108 326 92 C378 76 398 146 438 170 C488 200 520 128 566 114 C620 98 654 164 704 190"></path>
+        <path class="signal-path" d="M-12 232 C190 320 422 310 734 230"></path>
+
+        <circle class="network-halo" cx="112" cy="104" r="19"></circle>
+        <circle class="network-halo" cx="326" cy="92" r="19"></circle>
+        <circle class="network-halo" cx="566" cy="114" r="19"></circle>
+        <circle class="network-node" cx="0" cy="172" r="4"></circle>
+        <circle class="network-node" cx="112" cy="104" r="6"></circle>
+        <circle class="network-node" cx="220" cy="164" r="4"></circle>
+        <circle class="network-node" cx="326" cy="92" r="6"></circle>
+        <circle class="network-node" cx="438" cy="170" r="4"></circle>
+        <circle class="network-node" cx="566" cy="114" r="6"></circle>
+        <circle class="network-node" cx="704" cy="190" r="4"></circle>
+        <circle class="network-node" cx="148" cy="22" r="3"></circle>
+        <circle class="network-node" cx="244" cy="272" r="3"></circle>
+        <circle class="network-node" cx="350" cy="8" r="3"></circle>
+        <circle class="network-node" cx="468" cy="286" r="3"></circle>
+        <circle class="network-node" cx="610" cy="30" r="3"></circle>
+        <circle class="network-node" cx="770" cy="108" r="3"></circle>
+      </g>
+
+      <g transform="translate(1030 610)" opacity=".78">
+        <path class="shredder-axis" d="M-28 96 H486"></path>
+        <path class="shredder-tooth" d="M0 96 L44 38 L82 96 L126 38 L166 96 L210 38 L250 96 L294 38 L334 96 L378 38 L418 96 L418 178 L0 178 Z"></path>
+        <path class="shredder-tooth" d="M18 142 L62 84 L102 142 L146 84 L186 142 L230 84 L270 142 L314 84 L354 142 L398 84 L438 142 L438 214 L18 214 Z"></path>
+        <circle class="network-halo" cx="-8" cy="96" r="15"></circle>
+        <circle class="network-halo" cx="446" cy="142" r="15"></circle>
+      </g>
+    </svg>
+
     <div class="container essay-hero-grid">
       <div>
         <div class="eyebrow">Field Notes · 01 / Value systems</div>
