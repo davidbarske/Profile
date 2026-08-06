@@ -160,6 +160,7 @@
     activeIndex = index;
     lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
+    if (document.querySelector('.probability-article')) lightbox.classList.add('probability-lightbox');
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
     lightbox.setAttribute('aria-label', 'Article visual gallery');
