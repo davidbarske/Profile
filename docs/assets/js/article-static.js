@@ -1,6 +1,25 @@
 (() => {
   'use strict';
 
+  const progress = document.querySelector('.reading-progress i');
+  if (progress) {
+    let ticking = false;
+    const updateProgress = () => {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      const value = available > 0 ? Math.min(1, Math.max(0, window.scrollY / available)) : 0;
+      progress.style.transform = `scaleX(${value})`;
+      ticking = false;
+    };
+    const requestProgress = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateProgress);
+    };
+    updateProgress();
+    window.addEventListener('scroll', requestProgress, { passive: true });
+    window.addEventListener('resize', requestProgress);
+  }
+
   const menuButton = document.querySelector('.article-menu-toggle');
   const articleNav = document.getElementById('article-navigation');
   if (menuButton && articleNav) {
@@ -38,6 +57,45 @@
       });
     });
   });
+
+  const ledgerData = {
+    cash: {
+      counts: 'Ticket cost, prize probability and expected cash return.',
+      sees: 'A financially negative-expectation wager.',
+      misses: 'Anticipation, unequal access to alternatives and relational aspiration.',
+    },
+    waiting: {
+      counts: 'The wager plus the lived value of the waiting period before the draw.',
+      sees: 'A bet that also creates an interval of anticipation before its financial outcome is known.',
+      misses: 'How differently that interval may matter to people with radically different routes forward.',
+    },
+    possibility: {
+      counts: 'Financial odds, anticipation and the availability of credible alternative futures.',
+      sees: 'Identical mathematical odds carrying different subjective utility across unequal circumstances.',
+      misses: 'Where the imagined benefit travels when prosperity is understood relationally.',
+    },
+    network: {
+      counts: 'The wager, anticipation, constrained alternatives and the family or community network around the player.',
+      sees: 'An individual purchase whose imagined upside can include parents, children, housing, debt, education and enterprise.',
+      misses: 'Nothing automatically: the broader ledger still has to count addiction, predatory design and financial harm.',
+    },
+  };
+  const ledgerTabs = [...document.querySelectorAll('.prob-ledger-tabs button')];
+  const ledgerPanel = document.querySelector('.prob-ledger-panel');
+  if (ledgerTabs.length && ledgerPanel) {
+    ledgerTabs.forEach(button => button.addEventListener('click', () => {
+      const lens = ledgerData[button.dataset.ledger];
+      if (!lens) return;
+      ledgerTabs.forEach(tab => {
+        const active = tab === button;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+      ledgerPanel.querySelector('.ledger-counts').textContent = lens.counts;
+      ledgerPanel.querySelector('.ledger-sees').textContent = lens.sees;
+      ledgerPanel.querySelector('.ledger-misses').textContent = lens.misses;
+    }));
+  }
 
   const lensData = [
     {
